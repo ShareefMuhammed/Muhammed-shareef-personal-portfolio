@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Download, ArrowRight } from "lucide-react";
+import { Download, ArrowRight, FileText } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -41,8 +41,8 @@ export function HeroSection() {
               <Link href="#projects" className={cn(buttonVariants({ size: "lg" }), "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0")}>
                 View Projects <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
-              <a href="/resume.jpg" download="Muhammed_Shareef_Resume.jpg" target="_blank" rel="noopener noreferrer" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "border-border hover:bg-accent/50")}>
-                Download Resume <Download className="ml-2 h-4 w-4" />
+              <a href="https://drive.google.com/file/d/1gLYsPcLnPeLXJ-4ccJVnvQI7leugTtXY/view?usp=sharing" target="_blank" rel="noopener noreferrer" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "border-border hover:bg-accent/50")}>
+                View Resume <FileText className="ml-2 h-4 w-4" />
               </a>
             </div>
 
