@@ -39,12 +39,31 @@ export function ContactSection() {
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    reset();
-    setTimeout(() => setIsSuccess(false), 5000);
+    try {
+      const formUrl = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdBzLIgHvMYTZM1UsWrOob7M78CGTILlt9I-Ce3X3FI64qJCg/formResponse";
+      const formData = new URLSearchParams();
+      formData.append("entry.1430359327", data.fullName);
+      formData.append("entry.518976152", data.email);
+      const combinedMessage = `Subject: ${data.subject}\n\nMessage: ${data.message}`;
+      formData.append("entry.704476240", combinedMessage);
+
+      await fetch(formUrl, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: formData.toString(),
+      });
+
+      setIsSuccess(true);
+      reset();
+      setTimeout(() => setIsSuccess(false), 5000);
+    } catch (error) {
+      console.error("Failed to submit form:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
